@@ -3,9 +3,9 @@
 class Player < ApplicationRecord
   belongs_to :team
 
-  validates :teamid, :jerseynumber, :positiontype, :positionname, :fullname,
-            :playerid, presence: true
-  validates :teamid, :jerseynumber, :playerid,
+  validates :nhlteamid, :jerseynumber, :positiontype, :positionname, :fullname,
+            :nhlplayerid, presence: true
+  validates :nhlteamid, :jerseynumber, :nhlplayerid,
             numericality: { only_integer: true }
-  validates :teamid, :playerid, uniqueness: true
+  validates :nhlteamid, :nhlplayerid, uniqueness: true
 end
