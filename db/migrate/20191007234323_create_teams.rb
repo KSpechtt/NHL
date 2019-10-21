@@ -3,14 +3,14 @@
 class CreateTeams < ActiveRecord::Migration[6.0]
   def change
     create_table :teams do |t|
-      t.integer :nhlteamid
+      t.integer :nhlteam_id
       t.string :name
       t.string :venue
       t.string :city
       t.string :division
-      t.integer :divisionid
+      t.integer :division_id
       t.string :conference
-      t.integer :conferenceid
+      t.integer :conference_id
       t.integer :year
 
       t.timestamps
