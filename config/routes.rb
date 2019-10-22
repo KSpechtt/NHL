@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # get '/pages/:page' => 'pages#show'
   # get '/static/:permalink', to: 'pages#permalink', as: 'permalink'
   get '/pages/:page' => 'pages#show'
+  get '/players/:page' => 'players#show'
+  get '/teams/:page' => 'teams#show'
 
   root 'pages#show', page: 'home'
 end
