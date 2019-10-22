@@ -2,11 +2,12 @@
 
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  # get '/pages/:page' => 'pages#show'
-  # get '/static/:permalink', to: 'pages#permalink', as: 'permalink'
-  get '/pages/:page' => 'pages#show'
-  get '/players/:page' => 'players#show'
-  get '/teams/:page' => 'teams#show'
+  resources :pages, only: [:show]
 
-  root 'pages#show', page: 'home'
+  get '/pages/about', to: 'pages#about', as: 'about'
+
+  resources :players, only: :index
+  resources :teams, only: :index
+
+  root to: 'pages#home'
 end
