@@ -8,7 +8,7 @@
           <p>There are no appointments.</p>
             <% else %>
               <ul class="list-group">
-                <% @teams.order(name: :asc).each do |teams| %>
+                <% @teams.each do |teams| %>
                   <li class="list-group-item">
                     <%= teams.name %>
                   </li>

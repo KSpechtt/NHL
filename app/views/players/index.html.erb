@@ -4,11 +4,12 @@
         <div class="col-lg-12 text-center">
           <h1 class="mt-5">Current NHL Players!</h1>
           <br>
+          <%=paginate @players %>
           <% if @players.empty? %>
-          <p>There are no appointments.</p>
+          <p>There are no players.</p>
             <% else %>
               <ul class="list-group">
-                <% @players.order(full_name: :asc).each do |players| %>
+                <%  @players.each do |players| %>
                   <li class="list-group-item">
                     <%= players.full_name %>
                   </li>
