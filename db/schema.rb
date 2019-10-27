@@ -46,9 +46,15 @@ ActiveRecord::Schema.define(version: 2019_10_27_002128) do
     t.string "division_name"
     t.string "conference_name"
     t.integer "year"
+    t.integer "conference_id", null: false
+    t.integer "division_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["conference_id"], name: "index_teams_on_conference_id"
+    t.index ["division_id"], name: "index_teams_on_division_id"
   end
 
   add_foreign_key "players", "teams"
+  add_foreign_key "teams", "conferences"
+  add_foreign_key "teams", "divisions"
 end

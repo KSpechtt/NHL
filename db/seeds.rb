@@ -201,8 +201,8 @@ teams.each do |team|
     venue: team_data['venue']['name'],
     city: team_data['venue']['city'],
     # Once you added your new FK references this should work:
-    # division: d,,
-    # conference: c,
+    division: d,
+    conference: c,
 
     division_name: team_data['division']['name'],
     conference_name: team_data['conference']['name'],

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # Getting our players and teams index view
   resources :players, only: :index
   resources :teams, only: :index
+  resources :conferences
+  resources :divisions
 
   # Setting our home page
   root to: 'pages#home'

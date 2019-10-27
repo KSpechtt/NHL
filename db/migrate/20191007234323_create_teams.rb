@@ -11,8 +11,8 @@ class CreateTeams < ActiveRecord::Migration[6.0]
       t.string :conference_name
       t.integer :year
 
-      # t.references :conference, null: false, foreign_key: true
-      # t.references :division, null: false, foreign_key: true
+      t.references :conference, null: false, foreign_key: true
+      t.references :division, null: false, foreign_key: true
 
       t.timestamps
     end

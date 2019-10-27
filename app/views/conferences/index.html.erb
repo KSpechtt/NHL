@@ -1,0 +1,20 @@
+ <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="mt-5">Current NHL Conferences!</h1>
+          <br>
+          <% if @conferences.empty? %>
+          <p>There are no conferences.</p>
+            <% else %>
+              <ul class="list-group">
+                <%  @conferences.each do |c| %>
+                  <li class="list-group-item">
+                    <%= c.conference_name %>
+                  </li>
+            <% end %>
+            </ul>
+          <% end %>
+        </div>
+        </div>
+      </div>
