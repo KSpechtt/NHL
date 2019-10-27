@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 2019_10_27_002128) do
     t.string "name"
     t.string "venue"
     t.string "city"
-    t.string "division"
-    t.string "conference"
+    t.string "division_name"
+    t.string "conference_name"
     t.integer "year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
