@@ -12,10 +12,10 @@ require 'open-uri'
 require 'json'
 require 'net/http'
 
-Player.destroy_all
-Team.destroy_all
 Conference.destroy_all
 Division.destroy_all
+Player.destroy_all
+Team.destroy_all
 
 def parse(url)
   JSON.parse(open(url).read)
@@ -56,23 +56,38 @@ jets = parse('https://statsapi.web.nhl.com/api/v1/teams/52?expand=team.roster')
 conferences = parse('https://statsapi.web.nhl.com/api/v1/conferences')
 divisions = parse('https://statsapi.web.nhl.com/api/v1/divisions')
 
-teams = [jets, yotes, vegas, wild, cbj, sharks, kings, stars, ducks, van,
-         oilers, avs, flames, blues, preds, wings, hawks, caps, tb, flor,
-         canes, leafs, sens, habs, sabres, bruins, pens, philly, nyi, nyr, njd]
+teams = [hawks, yotes, vegas, wild, cbj, sharks, kings, stars, ducks, van,
+         oilers, avs, flames, blues, preds, wings, caps, tb, flor,
+         canes, leafs, sens, habs, sabres, bruins, pens, philly, nyi, nyr, njd,
+         jets]
 
 teamid = 0
+
+conferences['conferences'].each do |c|
+  Conference.create(
+    conference_id: c['id'],
+    conference_name: c['name']
+  )
+end
+
+divisions['divisions'].each do |c|
+  Division.create(
+    division_id: c['id'],
+    division_name: c['name']
+  )
+end
 
 teams.each do |team|
   team['teams'].each do |value|
     Team.create(
-      nhlteam_id: value['id'],
+      team_id: value['id'],
       name: value['name'],
       venue: value['venue']['name'],
       city: value['venue']['city'],
       division: value['division']['name'],
-      division_id: value['division']['id'],
+      # division_id: value['division']['id'],
       conference: value['conference']['name'],
-      conference_id: value['conference']['id'],
+      # conference_id: value['conference']['id'],
       year: value['firstYearOfPlay']
     )
 
@@ -81,7 +96,7 @@ teams.each do |team|
     value['roster']['roster'].each do |player|
       Player.create(
         nhlplayer_id: player['person']['id'],
-        nhlteam_id: teamid,
+        team_id: teamid,
         jersey_number: player['jerseyNumber'],
         position_type: player['position']['type'],
         position_name: player['position']['name'],
@@ -90,20 +105,6 @@ teams.each do |team|
     end
   end
 end
-
-# conferences['conferences'].each do |c|
-#   Conference.create(
-#     conference_id: c['id'],
-#     name: c['name']
-#   )
-# end
-
-# divisions['divisions'].each do |c|
-#   Division.create(
-#     division_id: c['id'],
-#     name: c['name']
-#   )
-# end
 
 puts "Generated #{Player.count} players."
 puts "Generated #{Team.count} teams."
