@@ -14,6 +14,8 @@ require 'net/http'
 
 Player.destroy_all
 Team.destroy_all
+Conference.destroy_all
+Division.destroy_all
 
 def parse(url)
   JSON.parse(open(url).read)
@@ -51,37 +53,8 @@ vegas = parse('https://statsapi.web.nhl.com/api/v1/teams/54?expand=team.roster')
 yotes = parse('https://statsapi.web.nhl.com/api/v1/teams/53?expand=team.roster')
 jets = parse('https://statsapi.web.nhl.com/api/v1/teams/52?expand=team.roster')
 
-# njd = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/1?expand=team.roster')
-# nyi = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/2?expand=team.roster')
-# nyr = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/3?expand=team.roster')
-# philly = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/4?expand=team.roster')
-# pens = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/5?expand=team.roster')
-# bruins = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/6?expand=team.roster')
-# sabres = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/7?expand=team.roster')
-# habs = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/8?expand=team.roster')
-# sens = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/9?expand=team.roster')
-# leafs = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/10?expand=team.roster')
-# canes = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/12?expand=team.roster')
-# flor = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/13?expand=team.roster')
-# tb = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/14?expand=team.roster')
-# caps = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/15?expand=team.roster')
-# hawks = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/16?expand=team.roster')
-# wings = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/17?expand=team.roster')
-# preds = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/18?expand=team.roster')
-# blues = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/19?expand=team.roster')
-# flames = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/20?expand=team.roster')
-# avs = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/21?expand=team.roster')
-# oilers = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/22?expand=team.roster')
-# van = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/23?expand=team.roster')
-# ducks = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/24?expand=team.roster')
-# stars = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/25?expand=team.roster')
-# kings = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/26?expand=team.roster')
-# sharks = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/28?expand=team.roster')
-# cbj = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/29?expand=team.roster')
-# wild = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/30?expand=team.roster')
-# vegas = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/54?expand=team.roster')
-# yotes = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/53?expand=team.roster')
-# jets = JSON.parse('https://statsapi.web.nhl.com/api/v1/teams/52?expand=team.roster')
+conferences = parse('https://statsapi.web.nhl.com/api/v1/conferences')
+divisions = parse('https://statsapi.web.nhl.com/api/v1/divisions')
 
 teams = [jets, yotes, vegas, wild, cbj, sharks, kings, stars, ducks, van,
          oilers, avs, flames, blues, preds, wings, hawks, caps, tb, flor,
@@ -102,6 +75,7 @@ teams.each do |team|
       conference_id: value['conference']['id'],
       year: value['firstYearOfPlay']
     )
+
     teamid = value['id']
 
     value['roster']['roster'].each do |player|
@@ -117,19 +91,21 @@ teams.each do |team|
   end
 end
 
-# teams.each do |team|
-#   team['teams'][0]['roster']['roster'].each do |player|
-#     Player.create(
-#       nhlplayer_id: player['person']['id'],
-#       nhlteam_id: teamid,
-#       jersey_number: player['jerseyNumber'],
-#       position_type: player['position']['type'],
-#       position_name: player['position']['name'],
-#       full_name: player['person']['fullName']
-#     )
-#     # puts player['person']['fullName']
-#   end
+# conferences['conferences'].each do |c|
+#   Conference.create(
+#     conference_id: c['id'],
+#     name: c['name']
+#   )
+# end
+
+# divisions['divisions'].each do |c|
+#   Division.create(
+#     division_id: c['id'],
+#     name: c['name']
+#   )
 # end
 
 puts "Generated #{Player.count} players."
 puts "Generated #{Team.count} teams."
+puts "Generated #{Conference.count} Conferences."
+puts "Generated #{Division.count} Divisions."

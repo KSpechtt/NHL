@@ -3,5 +3,5 @@
 class Division < ApplicationRecord
   has_many :teams
 
-  validates :conference_id, :name, presence: true
+  validates :division_id, :name, presence: true
 end
