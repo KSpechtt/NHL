@@ -8,9 +8,7 @@ class CreateTeams < ActiveRecord::Migration[6.0]
       t.string :venue
       t.string :city
       t.string :division
-      # t.integer :div_id
       t.string :conference
-      # t.integer :conf_id
       t.integer :year
 
       # t.references :conference, null: false, foreign_key: true

@@ -95,7 +95,7 @@ teams.each do |team|
 
     value['roster']['roster'].each do |player|
       Player.create(
-        nhlplayer_id: player['person']['id'],
+        player_id: player['person']['id'],
         team_id: teamid,
         jersey_number: player['jerseyNumber'],
         position_type: player['position']['type'],
