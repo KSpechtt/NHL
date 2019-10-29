@@ -2,7 +2,8 @@
       <div class="row">
         <div class="col-lg-12 text-center">
           <h2 class="mt-5"><%= @teams.name%></h2>
-          <br>
+          <p>The <%= @teams.name%> play in <%= @teams.city%> inside the <%= @teams.venue%>. The <%= @teams.city%>
+          play in the <%=link_to @teams.conference.conference_name, @teams.conference%> Conference in the <%=link_to @teams.division.division_name, @teams.division %>  Division.</p>
            <ul class="list-group">
             <% @teams.players.order(:full_name).each do |player| %>
               <li class="list-group-item">
