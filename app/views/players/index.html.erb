@@ -15,7 +15,7 @@
             <% else %>
               <ul class="list-group">
                 <%  @players.each do |player| %>
-                  <li class="list-group-item">
+                  <li class="list-group">
                     <%= link_to player.full_name, player %>
                   </li>
             <% end %>

@@ -11,7 +11,7 @@
           <p>Your search for <%=@q%> returned <%= pluralize(@players.size, 'result') %> </p>
           <ul class="list-group">
                 <%  @players.each do |player| %>
-                  <li class="list-group-item">
+                  <li class="list-group">
                     <%= link_to player.full_name, player %>
                   </li>
             <% end %>

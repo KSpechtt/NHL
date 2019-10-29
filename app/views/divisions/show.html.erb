@@ -5,7 +5,7 @@
           <br>
            <ul class="list-group">
             <% @divisions.teams.order(:name).each do |team| %>
-              <li class="list-group-item">
+              <li class="list-group">
                 <%= link_to team.name, team %>
               </li>
               <% end%>
