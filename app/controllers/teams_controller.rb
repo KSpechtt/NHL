@@ -2,7 +2,7 @@
 
 class TeamsController < ApplicationController
   def show
-    # render template: "teams/#{params[:page]}"
+    @teams = Team.find(params[:id])
   end
 
   def index

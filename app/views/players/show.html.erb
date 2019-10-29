@@ -1,0 +1,14 @@
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="mt-5"><%= @players.full_name%></h2>
+          <br>
+            <p><%= @players.full_name%> plays for the <%= link_to @players.team.name, @players.team%>.
+            The <%= @players.team.name%> play in the
+            <%=link_to @players.team.conference.conference_name, @players.team.conference%>
+            Conference in the <%=link_to @players.team.division.division_name, @players.team.division%>
+             Division. He current plays as a <%= @players.position_name =%>
+            and wears the jersey #<%=@players.jersey_number%>.</p>
+        </div>
+        </div>
+      </div>

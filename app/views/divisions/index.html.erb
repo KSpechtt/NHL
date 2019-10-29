@@ -10,7 +10,7 @@
               <ul class="list-group">
                 <%  @divisions.each do |d| %>
                   <li class="list-group-item">
-                    <%= d.division_name %>
+                    <%= link_to d.division_name, d %>
                   </li>
             <% end %>
             </ul>

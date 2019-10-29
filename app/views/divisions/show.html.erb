@@ -1,0 +1,15 @@
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="mt-5">Current teams in the <%= @divisions.division_name%> Division!</h2>
+          <br>
+           <ul class="list-group">
+            <% @divisions.teams.order(:name).each do |team| %>
+              <li class="list-group-item">
+                <%= link_to team.name, team %>
+              </li>
+              <% end%>
+            </ul>
+        </div>
+      </div>
+     </div>

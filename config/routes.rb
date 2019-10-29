@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   get '/pages/about', to: 'pages#about', as: 'about'
 
   # Getting our players and teams index view
-  resources :players, only: :index
-  resources :teams, only: :index
+  resources :players, only: %i[index show] do
+    collection do
+      get 'search_results'
+    end
+  end
+  resources :teams, only: %i[index show]
   resources :conferences
   resources :divisions
 

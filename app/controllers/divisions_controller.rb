@@ -2,7 +2,7 @@
 
 class DivisionsController < ApplicationController
   def show
-    # render template: "teams/#{params[:page]}"
+    @divisions = Division.find(params[:id])
   end
 
   def index

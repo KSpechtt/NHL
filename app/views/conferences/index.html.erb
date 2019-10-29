@@ -10,7 +10,7 @@
               <ul class="list-group">
                 <%  @conferences.each do |c| %>
                   <li class="list-group-item">
-                    <%= c.conference_name %>
+                    <%= link_to c.conference_name, c %>
                   </li>
             <% end %>
             </ul>

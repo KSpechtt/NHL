@@ -1,6 +1,6 @@
 class ConferencesController < ApplicationController
   def show
-    # render template: "teams/#{params[:page]}"
+    @conferences = Conference.find(params[:id])
   end
 
   def index

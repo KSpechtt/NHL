@@ -13,38 +13,29 @@
   <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div class="container">
-        <a class="navbar-brand" href="<%=root_path%>">NHL Database
-        <%= link_to 'NHL Database', root_path%>
-        </a>
+        <h4 class ="navbar-text">NHL Database</h4>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="<%=root_path%>">Home
-              <%= link_to 'Home', root_path %>
-              </a>
+            <li class="nav-item">
+              <%= link_to 'Home', root_path, class:'nav-link' %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%=about_path%>">About
-              <%= link_to 'About', about_path %>
-              </a>
+              <%= link_to 'About', about_path, class:'nav-link'%>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%=teams_path%>">Teams</a>
+              <%= link_to 'Teams', teams_path, class:'nav-link'%>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%=players_path%>">Players
-              </a>
+              <%= link_to 'Players', players_path, class:'nav-link'%>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%=conferences_path%>">Conferences
-              </a>
+              <%= link_to 'Divisions', divisions_path, class:'nav-link'%>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<%=divisions_path%>">Divisions
-              </a>
+              <%= link_to 'Conferences', conferences_path, class:'nav-link'%>
             </li>
           </ul>
         </div>
