@@ -9,6 +9,8 @@
           <%= text_field_tag(:q) %>
           <%= submit_tag("Search") %>
           <% end %>
+          <%= link_to "Advanced Search", new_search_path %>
+
           <%=paginate @players %>
           <% if @players.empty? %>
           <p>There are no players.</p>

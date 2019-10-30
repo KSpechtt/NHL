@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :teams, only: %i[index show]
   resources :conferences
   resources :divisions
+  resources :searches
 
   # Setting our home page
   root to: 'pages#home'

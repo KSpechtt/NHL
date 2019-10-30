@@ -4,7 +4,7 @@
           <h2 class="mt-5">Current teams in the <%= @conferences.conference_name%> Conference!</h2>
           <br>
            <ul class="list-group">
-            <% @conferences.teams.order(:name).each do |team| %>
+            <% @conferences.teams.each do |team| %>
               <li class="list-group">
                 <%= link_to team.name, team %>
               </li>

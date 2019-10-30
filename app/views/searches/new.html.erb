@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="col-lg-12 text-center">
+    <h1>Advanced Search</h1>
+
+    <%= form_for @search, html: {class: "pure-form"} do |s| %>
+
+      <div class="field">
+      <%= s.label :keywords %><br>
+      <%= s.text_field :keywords %>
+      </div>
+
+      <div class="field">
+      <%= s.label :category %><br>
+      <%= s.select :category, options_for_select(@categories), :include_blank => true %>
+      </div>
+
+      <div class="field">
+      <%= s.label :conference %><br>
+      <%= s.select :conference, options_for_select(@conferences), :include_blank => true %>
+      </div>
+
+      <div class="field">
+      <%= s.label :team %><br>
+      <%= s.select :team, options_for_select(@teams), :include_blank => true %>
+      </div>
+
+      <div class="field">
+      <%= s.label :number %><br>
+      <%= s.select :number, options_for_select(@numbers), :include_blank => true %>
+      </div>
+
+      <div class="actions"><%= s.submit "Search", class: "pure-button pure-button-primary" %></div>
+
+      <%end%>
+
+      <p><%=link_to 'Back', players_path %></p>
+    </div>
+</div>

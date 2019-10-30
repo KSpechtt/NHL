@@ -1,0 +1,20 @@
+<div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="mt-5">Current NHL Players!</h1>
+          <br>
+          <% if @search.search_players.empty? %>
+          <p> No records Found</p>
+          <% else %>
+          <p>Your search for returned <%= pluralize(@search.search_players.size, 'result') %> </p>
+          <ul class="list-group">
+                <%  @search.search_players.each do |player| %>
+                  <li class="list-group">
+                    <%= link_to player.full_name, player %>
+                  </li>
+            <% end %>
+            </ul>
+            <% end %>
+        </div>
+        </div>
+      </div>
